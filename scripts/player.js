@@ -400,7 +400,7 @@ SC.Player.prototype = {
     if($("body").hasClass("logged-in")) {
 
       // load playlists for user
-      $.getJSON("/playlists",function(playlists) {
+      $.getJSON("/script/sc/playlists",function(playlists) {
         $.each(playlists,function() {
           self.playlists[this.playlist.id] = new SC.Playlist(this, self);
         });
@@ -745,7 +745,7 @@ SC.Player.prototype = {
 };
 
 soundManager.flashVersion = 9;
-soundManager.url = '/scripts/.';
+soundManager.url = '/script/asset/cloud-player/.';
 soundManager.useConsole = true;
 soundManager.consoleOnly = true;
 soundManager.debugMode = false; // disable debug mode

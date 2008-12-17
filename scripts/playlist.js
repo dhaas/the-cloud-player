@@ -121,7 +121,7 @@ SC.Playlist.prototype = {
     var format = "js";
     if(!baseUrl) { // if no baseUrl then use json
       var format = "json";
-      var baseUrl = "/api/";      
+      var baseUrl = "/script/sc/";      
     }
     var pl = this.properties.playlist;
     if(pl.smart) { // check for all smart playlist params
@@ -157,6 +157,7 @@ SC.Playlist.prototype = {
       baseUrl += "&callback=?"; // add JSONP callback param      
     }
     baseUrl += "&limit=" + this.limit; // increase limit to 100
+    console.log("baseUrl = " + baseUrl);
     return baseUrl;
   },
   load : function() {
@@ -169,7 +170,7 @@ SC.Playlist.prototype = {
         var data = eval('(' + dataJS + ')');
         if(data.response && parseInt(data.response) == 408) { // if google app engine timeout, then fallback to use the sc api directly, bypassing the caching layer
           console.log('app engine timeout, sc api fallback')
-          $.getJSON(self.generateTracksUrl("http://api.soundcloud.com/") + "&offset=" + self.offset, function(dataNonCached) {
+            $.getJSON(self.generateTracksUrl() + "&offset=" + self.offset, function(dataNonCached) {
             self.processTrackData(dataNonCached);
           })
         } else {
