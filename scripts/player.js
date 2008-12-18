@@ -2,7 +2,6 @@ SC.Player = SC.Class();
 SC.Player.prototype = {
   isPlaying: false,
   initialize: function() {
-
     this.audioTracks = {}; // has for all sounds
     this.progress = $('#progress div:first');
     this.loading = $('#progress div.loading');
@@ -421,32 +420,32 @@ SC.Player.prototype = {
         
       });
     } else { // not logged in, then load a few standard playlists without persisting
-      self.playlists['latest'] = new SC.Playlist({
-        is_owner: true,
-        playlist: {
-          id : "latest",
-          name : "Latest Tracks",
-          smart : true,
-          version : 0,
-          smart_filter : {
-            order : "latest"
-          }
-        }
-      },self);
+	self.playlists['latest'] = new SC.Playlist({
+            is_owner: true,
+            playlist: {
+		id : "latest",
+		name : "Latest Tracks",
+		smart : true,
+		version : 0,
+		smart_filter : {
+		    order : "latest"
+		}
+            }
+	},self);
 
-      self.playlists['indie'] = new SC.Playlist({
-        is_owner: true,
-        playlist: {
-          id : "indie",
-          name : "Indie",
-          smart : true,
-          version : 0,
-          smart_filter : {
-            order : "latest",
-            genres : "indie"
-          }
-        }
-      },self);
+	self.playlists['indie'] = new SC.Playlist({
+            is_owner: true,
+            playlist: {
+		id : "indie",
+		name : "Indie",
+		smart : true,
+		version : 0,
+		smart_filter : {
+		    order : "latest",
+		    genres : "indie"
+		}
+            }
+	},self);
 
       self.playlists['deephouse'] = new SC.Playlist({
         is_owner: true,
@@ -745,7 +744,7 @@ SC.Player.prototype = {
 };
 
 soundManager.flashVersion = 9;
-soundManager.url = '/script/asset/cloud-player/.';
+soundManager.url = '/script/asset/cloud-player/scripts';
 soundManager.useConsole = true;
 soundManager.consoleOnly = true;
 soundManager.debugMode = false; // disable debug mode
